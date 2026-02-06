@@ -3,12 +3,13 @@ pipeline {
  stages {
  stage('Checkout Code') {
  steps {
-echo 'code checked out successfully'
+echo 'checked output successfull'
  }
  }
- stage('Show Files') {
+ stage('Print Directory') {
  steps {
- bat 'dir'
+ bat 'cd'
+  echo 'directory found successfully'
  }
  }
  }
