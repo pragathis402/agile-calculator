@@ -3,7 +3,7 @@ pipeline {
  stages {
  stage('Checkout Code') {
  steps {
-echo 'code checked out successfully
+echo 'code checked out successfully'
  }
  }
  stage('Show Files') {
