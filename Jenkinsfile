@@ -3,12 +3,12 @@ pipeline {
  stages {
  stage('Checkout Code') {
  steps {
-echo 'checked output successfully'
+ echo 'checked output successfully'
  }
  }
- stage('Print Message') {
+ stage('Create File') {
  steps {
- echo 'Hello! Jenkins Pipeline executed successfully'
+ bat 'echo This file is created by Jenkins > demo.txt'
  }
  }
  }
