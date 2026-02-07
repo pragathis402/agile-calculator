@@ -6,9 +6,9 @@ pipeline {
  echo 'checked output successfully'
  }
  }
- stage('Create File') {
+ stage('Read File') {
  steps {
- bat 'echo This file is created by Jenkins > demo.txt'
+ bat 'type README.md'
  }
  }
  }
