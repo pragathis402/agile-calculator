@@ -3,13 +3,12 @@ pipeline {
  stages {
  stage('Checkout Code') {
  steps {
-echo 'checked output successfull'
+echo 'checked output successfully'
  }
  }
- stage('Print Directory') {
+ stage('Print Message') {
  steps {
- bat 'cd'
-  echo 'directory found successfully'
+ echo 'Hello! Jenkins Pipeline executed successfully'
  }
  }
  }
