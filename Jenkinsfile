@@ -1,15 +1,17 @@
 pipeline {
- agent any
- stages {
- stage('Checkout Code') {
- steps {
- echo 'checked output successfully'
- }
- }
- stage('Read File') {
- steps {
- bat 'type README.md'
- }
- }
- }
+    agent any
+    stages {
+        stage('Version 1') {
+            steps {
+                // Task 1: Checkout
+                checkout scm 
+                
+                // Task 2: Create directory
+                bat 'mkdir testfolder'
+                
+                // Task 3: Verify
+                bat 'dir'
+            }
+        }
+    }
 }
