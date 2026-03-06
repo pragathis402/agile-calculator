@@ -1,16 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Version 3: Copy Files') {
+        stage('Version 3') {
             steps {
                 checkout scm
-                // Ensure folder exists, then copy
                 bat 'if not exist testfolder mkdir testfolder'
+                // Task 2: Copy operation
                 bat 'copy README.md testfolder\\'
-                
-                // Verify
+                // Task 3: Verify
                 bat 'dir testfolder'
             }
         }
     }
-}S
+}
