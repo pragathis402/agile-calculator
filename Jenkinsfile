@@ -1,16 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage('Version 1') {
+        stage('Version 2: Add Files') {
             steps {
-                // Task 1: Checkout
-                checkout scm 
+                // Task 1: Checkout updated repository
+                checkout scm
                 
-                // Task 2: Create directory
-                bat 'mkdir testfolder'
+                // Task 2: Create two files inside the testfolder directory
+                bat 'echo Hello Jenkins > testfolder\\file1.txt'
+                bat 'echo Hello World > testfolder\\file2.txt'
                 
-                // Task 3: Verify
-                bat 'dir'
+                // Task 3: Display all files inside the directory
+                bat 'dir testfolder'
             }
         }
     }
