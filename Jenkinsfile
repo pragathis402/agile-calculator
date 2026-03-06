@@ -7,8 +7,8 @@ pipeline {
         stage('Task 1: Checkout') {
             steps {
                 echo "Running ${params.VERSION}..."
-                // Simulating checkout from GitHub
-                git 'https://github.com/your-repo/project.git'
+                // Using your actual working repository
+                git 'https://github.com/pragathis402/agile-calculator.git'
             }
         }
         
@@ -20,10 +20,11 @@ pipeline {
                     } else if (params.VERSION == 'V2') {
                         echo 'Project files are being processed.'
                     } else if (params.VERSION == 'V3') {
-                        sh 'touch status.txt'
+                        // Using 'powershell' because your logs show you are on Windows
+                        powershell 'New-Item -Path . -Name "status.txt" -ItemType "file" -Force'
                         echo 'status.txt created.'
                     } else if (params.VERSION == 'V4') {
-                        sh 'echo "Pipeline Execution Completed" >> status.txt'
+                        powershell 'Add-Content -Path status.txt -Value "Pipeline Execution Completed"'
                         echo 'Message appended.'
                     }
                 }
@@ -38,11 +39,11 @@ pipeline {
                     } else if (params.VERSION == 'V2') {
                         echo 'Processing completion.'
                     } else if (params.VERSION == 'V3') {
-                        sh 'echo "Build Successful" > status.txt'
+                        powershell 'Set-Content -Path status.txt -Value "Build Successful"'
                         echo 'Status written to file.'
                     } else if (params.VERSION == 'V4') {
                         echo 'Final Content of status.txt:'
-                        sh 'cat status.txt'
+                        powershell 'Get-Content status.txt'
                     }
                 }
             }
