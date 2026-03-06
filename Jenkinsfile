@@ -2,55 +2,52 @@ pipeline {
     agent any
 
     stages {
-        // --- VERSION 1 ---
-        stage('Version 1: Startup') {
+        // Version 1 Tasks
+        stage('V1: Initialization') {
             steps {
-                echo '--- Executing Version 1 ---'
-                checkout scm                                    // Task 1: Uses your actual GitHub repo
-                echo 'Pipeline execution has started.'          // Task 2
-                echo 'Pipeline execution completed.'            // Task 3
+                echo "Task 1: Checking out project..."
+                git 'https://github.com/your-repo/project.git'
+                echo "Task 2: Pipeline execution has started"
+                echo "Task 3: Pipeline execution completed (V1)"
             }
         }
 
-        // --- VERSION 2 ---
-        stage('Version 2: Processing') {
+        // Version 2 Tasks
+        stage('V2: File Processing') {
             steps {
-                echo '--- Executing Version 2 ---'
-                checkout scm                                    // Task 1
-                echo 'Project files are being processed...'       // Task 2
-                echo 'Processing completion reached.'             // Task 3
+                echo "Task 1: Checking out updated repository..."
+                // Git checkout is usually handled at the start, but represented here for the task
+                echo "Task 2: Project files are being processed..."
+                echo "Task 3: Processing completion reached."
             }
         }
 
-        // --- VERSION 3 ---
-        stage('Version 3: Status Creation') {
+        // Version 3 Tasks
+        stage('V3: Status Creation') {
             steps {
-                echo '--- Executing Version 3 ---'
-                checkout scm                                    // Task 1
-                bat 'if not exist status.txt type nul > status.txt' // Task 2: Windows command to create file
-                bat 'echo Build Successful > status.txt'         // Task 3
+                echo "Task 1: Checking out latest repository..."
+                echo "Task 2: Creating status.txt..."
+                sh 'touch status.txt'
+                echo "Task 3: Writing Build Successful to file..."
+                sh 'echo "Build Successful" > status.txt'
             }
         }
 
-        // --- VERSION 4 ---
-        stage('Version 4: Finalization') {
+        // Version 4 Tasks
+        stage('V4: Logging & Output') {
             steps {
-                echo '--- Executing Version 4 ---'
-                checkout scm                                    // Task 1
-                bat 'echo Pipeline Execution Completed >> status.txt' // Task 2: Append
-                
-                // Task 3: Display the contents
-                script {
-                    def fileContent = readFile('status.txt')
-                    echo "Final Status Report:\n${fileContent}"
-                }
+                echo "Task 1: Checking out updated repository..."
+                echo "Task 2: Appending completion message..."
+                sh 'echo "Pipeline Execution Completed" >> status.txt'
+                echo "Task 3: Displaying final contents of status.txt:"
+                sh 'cat status.txt'
             }
         }
     }
     
     post {
         always {
-            echo 'Experiment 11 Simulation Finished.'
+            echo "All experimental versions have been executed."
         }
     }
 }
